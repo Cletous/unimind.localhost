@@ -1,0 +1,125 @@
+/*general CSS*/
+:root{
+    --main-color: #1ca700;
+    --secondary-color: #004cff;
+    --red-color: #ff0000;
+    --white-color: #ffffff;
+    --black-color: #000000;
+}
+body{
+    margin: 0;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.centered{
+    text-align: center;
+}
+/*Header CSS*/
+.main-nav{
+    background-color: var(--secondary-color);
+    padding: 5px 15px;
+}
+.main-nav, .main-nav ul{
+    display:flex;
+    justify-content: space-between;
+    list-style-type: none;
+    color: var(--white-color);
+}
+
+.main-nav ul li{
+    padding: 0 10px;
+}
+.main-nav .nav-button{
+    background-color: var(--white-color);
+    padding: 10px;
+    align-self: center;
+    border-radius: 5px;
+    border: 2px solid var(--white-color);
+    color: var(--black-color);
+}
+.main-nav .nav-button:hover{
+    background-color: var(--secondary-color);
+    padding: 10px;
+    align-self: center;
+    border-radius: 5px;
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+}
+/*Auth CSS*/
+.auth-section{
+    background-color: var(--secondary-color);
+    width:50%;
+    margin: 20px auto;
+    padding: 10px 30px 30px;
+    border-radius: 10px;
+    color: var(--white-color);
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+.auth-form label, button{
+    margin: 10px 0 0 0;
+}
+
+.auth-form button{
+    background-color: var(--white-color);
+    border-radius: 5px;
+    padding: 5px 0px;
+    border: 0px;
+}
+
+.auth-form button:active, button:hover{
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    padding: 5px 0px;
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+}
+
+.auth-form button:disabled{
+    background-color: var(--black-color);
+    color: var(--white-color);
+    opacity: 0.5;
+    /* border: 0; */
+}
+
+.errmsg{
+    color: var(--red-color);
+    margin: 0;
+    font-size: 10px;
+}
+.hidden {
+    display: none;
+}
+
+input, label{
+    display: block;
+}
+
+.auth-link{
+    color:var(--white-color);
+    text-decoration: underline;
+}
+.auth-link:hover, .auth-link:active{
+    color:var(--main-color);
+    text-decoration: underline;
+}
+
+.login-button{
+    background-color: var(--secondary-color);
+    padding: 10px 20px;
+    color: var(--white-color);
+}
+.login-button:hover{
+    background-color: var(--main-color);
+    padding: 10px 20px;
+    color: var(--white-color);
+}
