@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import logo from '../images/branding/black-logo.png'
+import logo from '../images/branding/white-logo.png'
 
 const Navbar = () => {
     return (

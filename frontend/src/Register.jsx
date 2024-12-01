@@ -1,8 +1,10 @@
 import { renderHook } from "@testing-library/react";
 import { useRef, useState, useEffect } from "react";
+import axios from './api/axios';
 
 const EMAIL_REGEX = /^[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{4,24}$/;
+const REGISTER_URL = '/register';
 
 const Register = () => {
     const userRef = useRef();
@@ -43,7 +45,29 @@ const Register = () => {
 
     const registerUser = async (e) => {
         e.preventDefault();
-        setSuccess(true);
+        try {
+            const response = await axios.post(REGISTER_URL, 
+                JSON.stringify({email, pwd}),
+                {
+                    headers: { 'Content-Type': 'application/json'},
+                    withCredentials: true
+                }
+            );
+            console.log(response.data);
+            console.log(response.accessToken);
+            console.log(JSON.stringify(response));
+            setSuccess(true);
+            //then clear input field;
+        } catch (error) {
+            if (!error?.response) {
+                setErrMsg('No Server Response');
+            } else if (error.response?.status === 409) {
+                setErrMsg('Email already taken');
+            } else {
+                setErrMsg('Registration failed!');
+            }
+            errRef.current.focus();
+        }
     } 
 
     return (
