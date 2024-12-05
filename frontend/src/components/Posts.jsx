@@ -1,6 +1,6 @@
-import Post from "../post/Post";
+import Post from "./Post";
 import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../axios";
 
 const Posts = () => {
   const { isLoading, error, data } = useQuery(["posts"], () =>

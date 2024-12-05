@@ -45,7 +45,7 @@ const SharePost = () => {
     <div className="">
       <div className="">
         <div className="">
-          <div className="">
+          <form onSubmit={handleClick}>
             <input
               type="text"
               placeholder={`Care to share your problem(s) ${currentUser.anonymous_name}?`}
@@ -54,11 +54,11 @@ const SharePost = () => {
               value={description}
               required
             />
-          </div>
+            <button>Share</button>
+          </form>
         </div>
         <hr />
         <div className="">
-            <button onClick={handleClick}>Share</button>
         </div>
       </div>
     </div>

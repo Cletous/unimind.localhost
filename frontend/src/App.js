@@ -1,7 +1,7 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Logout from "./pages/logout/Logout";
-
+import Specialists from "./pages/Specialists";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -28,7 +28,7 @@ function App() {
   const Layout = () => {
     return (
       <QueryClientProvider client={queryClient}>
-        <div className={`theme-${darkMode ? "dark" : "light"}`}>
+        <div className="light">
           <Navbar />
           <div style={{ display: "flex" }}>
             <div style={{ flex: 6 }}>
@@ -65,6 +65,10 @@ function App() {
         {
           path: "/profile/:id",
           element: <Profile />,
+        },
+        {
+          path: "/specialists",
+          element: <Specialists />,
         },
       ],
     },

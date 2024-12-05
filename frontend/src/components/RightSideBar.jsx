@@ -6,9 +6,14 @@ const RightSideBar = () => {
       <div className="container">
         <div className="item">
           <span>Important Links</span>
-          <div className="">
-          <Link to="/my-posts">My Posts</Link>
-          </div>
+          <ul>
+            <li>
+              <Link to="/my-posts">My Posts</Link>
+            </li>
+            <li>
+              <Link to="/specialists">Specialists</Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

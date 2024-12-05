@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
-import "./comments.scss";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../context/authContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../axios";
 import moment from "moment";
 
 const Comments = ({ postId }) => {
-  const [desc, setDesc] = useState("");
+  const [description, setDescription] = useState("");
   const { currentUser } = useContext(AuthContext);
 
   const { isLoading, error, data } = useQuery(["comments"], () =>
@@ -31,22 +30,23 @@ const Comments = ({ postId }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    mutation.mutate({ desc, postId });
-    setDesc("");
+    mutation.mutate({ description, postId });
+    setDescription("");
   };
 
   return (
-    <div className="comments">
-      <div className="write">
-        <img src={"/upload/" + currentUser.profilePic} alt="" />
+    <div className="">
+      <form onSubmit={handleClick}>
         <input
           type="text"
           placeholder="write a comment"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
+          value={description}
+          name="description"
+          required
+          onChange={(e) => setDescription(e.target.value)}
         />
-        <button onClick={handleClick}>Send</button>
-      </div>
+        <button>Send Comment</button>
+      </form>
       {error
         ? "Something went wrong"
         : isLoading
@@ -55,8 +55,8 @@ const Comments = ({ postId }) => {
             <div className="comment">
               <img src={"/upload/" + comment.profilePic} alt="" />
               <div className="info">
-                <span>{comment.name}</span>
-                <p>{comment.desc}</p>
+                <span>{comment.anonymous_name} says:</span>
+                <p>{comment.description}</p>
               </div>
               <span className="date">
                 {moment(comment.createdAt).fromNow()}

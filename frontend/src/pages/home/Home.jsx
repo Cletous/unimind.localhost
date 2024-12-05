@@ -1,13 +1,10 @@
-import Posts from "../../components/posts/Posts"
+import Posts from "../../components/Posts"
 import SharePost from "../../components/SharePost"
 import "./home.scss"
 
 const Home = () => {
   return (
-    <div className="home">
-      {/* <Stories/>
-      <Share/> */}
-      
+    <div className="home">      
       <SharePost/>
       <Posts/>
     </div>
