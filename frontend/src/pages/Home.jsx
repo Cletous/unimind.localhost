@@ -1,6 +1,5 @@
-import Posts from "../../components/Posts"
-import SharePost from "../../components/SharePost"
-import "./home.scss"
+import Posts from "../components/Posts"
+import SharePost from "../components/SharePost"
 
 const Home = () => {
   return (

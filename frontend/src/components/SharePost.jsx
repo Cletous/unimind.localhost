@@ -3,19 +3,7 @@ import { AuthContext } from "../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../axios";
 const SharePost = () => {
-  const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
-
-  const upload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await makeRequest.post("/upload", formData);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const { currentUser } = useContext(AuthContext);
 
@@ -38,7 +26,6 @@ const SharePost = () => {
     
     mutation.mutate({ description });
     setDescription("");
-    setFile(null);
   };
 
   return (
@@ -52,6 +39,7 @@ const SharePost = () => {
               onChange={(e) => setDescription(e.target.value)}
               name="description"
               value={description}
+              className="full-width-input"
               required
             />
             <button>Share</button>

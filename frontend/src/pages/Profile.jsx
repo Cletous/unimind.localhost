@@ -1,4 +1,3 @@
-import "./profile.scss";
 import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -8,13 +7,13 @@ import PlaceIcon from "@mui/icons-material/Place";
 import LanguageIcon from "@mui/icons-material/Language";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Posts from "../../components/Posts";
+import Posts from "../components/Posts";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
+import { makeRequest } from "../axios";
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
-import Update from "../../components/update/Update";
+import { AuthContext } from "../context/authContext";
+import Update from "../components/Update";
 import { useState } from "react";
 
 const Profile = () => {

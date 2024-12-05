@@ -1,6 +1,6 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Logout from "./pages/logout/Logout";
+import Logout from "./pages/Logout";
 import Specialists from "./pages/Specialists";
 import {
   createBrowserRouter,
@@ -10,9 +10,8 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import RightSideBar from "./components/RightSideBar";
-import Home from "./pages/home/Home";
-import Profile from "./pages/profile/Profile";
-import "./style.scss";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
