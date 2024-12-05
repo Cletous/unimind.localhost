@@ -5,25 +5,27 @@ import jwt from "jsonwebtoken";
 export const register = (req, res) => {
   //CHECK USER IF EXISTS
 
-  const q = "SELECT * FROM users WHERE email = ?";
+  const q = "SELECT * FROM users WHERE anonymous_name = ? OR email = ?";
 
-  db.query(q, [req.body.email], (err, data) => {
+  db.query(q, [req.body.inputs.anonymous_name, req.body.inputs.email], (err, data) => {
     if (err) return res.status(500).json(err);
     if (data.length) return res.status(409).json("User already exists!");
     //CREATE A NEW USER
     //Hash the password
     const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(req.body.pwd, salt);
+    const hashedPassword = bcrypt.hashSync(req.body.inputs.password, salt);
 
     const q =
-      "INSERT INTO users (`email`,`password`) VALUE (?)";
+      "INSERT INTO users (`anonymous_name`,`email`,`password`) VALUE (?)";
 
     const values = [
-      req.body.email,
+      req.body.inputs.anonymous_name,
+      req.body.inputs.email,
       hashedPassword,
     ];
 
     db.query(q, [values], (err, data) => {
+      
       if (err) return res.status(500).json(err);
       return res.status(200).json("User has been created.");
     });
@@ -38,12 +40,12 @@ export const login = (req, res) => {
     if (data.length === 0) return res.status(404).json("User not found!");
 
     const checkPassword = bcrypt.compareSync(
-      req.body.pwd,
-      data[0].pwd
+      req.body.password,
+      data[0].password
     );
 
     if (!checkPassword)
-      return res.status(400).json("Wrong password or email!");
+      return res.status(400).json("Wrong password or username!");
 
     const token = jwt.sign({ id: data[0].id }, "secretkey");
 
