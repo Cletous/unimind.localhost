@@ -37,14 +37,16 @@ const Comments = ({ postId }) => {
   return (
     <div className="">
       <form onSubmit={handleClick}>
-        <input
-          type="text"
-          placeholder="write a comment"
-          value={description}
-          name="description"
-          required
-          onChange={(e) => setDescription(e.target.value)}
-        />
+            <div>
+            <textarea 
+            name="description" 
+            id="" 
+            required 
+            placeholder={`Care to share your comment(s) ${currentUser.anonymous_name}?`}
+            onChange={(e) => setDescription(e.target.value)}
+            className="full-width"
+            rows={2}></textarea>
+            </div>
         <button>Send Comment</button>
       </form>
       {error

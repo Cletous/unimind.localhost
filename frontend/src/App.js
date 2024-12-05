@@ -1,7 +1,7 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Logout from "./pages/Logout";
-import Specialists from "./pages/Specialists";
+import Specialists from "./components/Specialists";
 import {
   createBrowserRouter,
   RouterProvider,

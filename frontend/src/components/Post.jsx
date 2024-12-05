@@ -45,7 +45,7 @@ const Post = ({ post }) => {
           <div className="">{moment(post.createdAt).fromNow()}</div>
           <div className="">
           {post.userId === currentUser.id && (
-            <button className="" onClick={handleDelete}>delete post</button>
+            <button className="danger-button" onClick={handleDelete}>delete post</button>
           )}
           </div>
         </div>

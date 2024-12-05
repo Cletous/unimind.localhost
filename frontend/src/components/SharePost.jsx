@@ -25,31 +25,30 @@ const SharePost = () => {
     e.preventDefault();
     
     mutation.mutate({ description });
-    setDescription("");
   };
 
   return (
-    <div className="">
-      <div className="">
+      <div className="share-post">
         <div className="">
           <form onSubmit={handleClick}>
-            <input
-              type="text"
-              placeholder={`Care to share your problem(s) ${currentUser.anonymous_name}?`}
-              onChange={(e) => setDescription(e.target.value)}
-              name="description"
-              value={description}
-              className="full-width-input"
-              required
-            />
-            <button>Share</button>
+            <div>
+            <textarea 
+            name="description" 
+            id="" 
+            required 
+            placeholder={`Care to share your problem(s) ${currentUser.anonymous_name}?`}
+            onChange={(e) => setDescription(e.target.value)}
+            className="full-width-input"
+            rows={5}></textarea>
+            </div>
+            
+            <button className="button">Share</button>
           </form>
         </div>
         <hr />
         <div className="">
         </div>
       </div>
-    </div>
   );
 };
 

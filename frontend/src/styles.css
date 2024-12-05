@@ -18,6 +18,44 @@ body{
 .centered{
     text-align: center;
 }
+
+.button{
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    padding: 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+.button:hover{
+    background-color: var(--white-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+.danger-button{
+    background-color: var(--red-color);
+    border: 1px solid var(--red-color);
+    padding: 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+.danger-button:hover{
+    background-color: var(--white-color);
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+    padding: 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+/* Sidebar CSS */
+.sidebar{
+    background-color: #004cff;
+}
+.sidebar-nav{
+    list-style-type: none;
+}
 /*Header CSS*/
 .main-nav{
     background-color: var(--secondary-color);
@@ -147,6 +185,12 @@ input, label{
 }
 
 /* Posts CSS */
+.share-post{
+    margin: 20px;
+}
+.share-post .full-width-input{
+    width: 100%;
+}
 .posts{
     display: flex;
     flex-direction: column;

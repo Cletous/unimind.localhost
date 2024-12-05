@@ -6,7 +6,7 @@ const RightSideBar = () => {
       <div className="container">
         <div className="item">
           <span>Important Links</span>
-          <ul>
+          <ul className="sidebar-nav">
             <li>
               <Link to="/my-posts">My Posts</Link>
             </li>
