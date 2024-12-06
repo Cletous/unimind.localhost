@@ -15,6 +15,9 @@ body{
     width: 100%;
 }
 
+.success-text{
+    margin: 0 0 20px 0;
+}
 .centered{
     text-align: center;
 }
@@ -50,11 +53,30 @@ body{
     margin-bottom: 10px;
 }
 /* Sidebar CSS */
-.sidebar{
+.right-sidebar{
     background-color: #004cff;
+    height:auto;
+    margin: 20px;
+    padding: 20px;
+
+}
+.right-sidebar .heading{
+    color: var(--white-color);
+    text-transform: uppercase;
+    text-decoration: underline;
 }
 .sidebar-nav{
     list-style-type: none;
+    color: var(--white-color);
+    padding: 10px 0px;
+}
+.sidebar-nav li {
+    padding: 10px 5px;
+    border: 1px solid var(--white-color);
+}
+.sidebar-nav li a{
+    text-decoration: none;
+    color: var(--white-color);
 }
 /*Header CSS*/
 .main-nav{
@@ -195,7 +217,8 @@ input, label{
     display: flex;
     flex-direction: column;
     gap: 50px;
-  }
+    margin: 30px;
+}
 
 .post-grid{
     display: grid;
@@ -208,11 +231,20 @@ input, label{
 }
 
 .post-profile-box img{
-    max-width:100%;
+    width: 30px;
+    height: 30px;
+    /* max-width:100%; */
     border-radius: 100px;
 }
 .post-profile-box{
-    grid-column: 1 / 2;
+    /* grid-column: 1 / 2; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.post-profile-box .button-box{
+    width: 100px;
 }
 .post-meta-box{
     grid-column: 2 / 9;
@@ -233,4 +265,38 @@ input, label{
 }
 .error h2{
     margin-bottom: 30px;
+}
+
+/* Profile Tab CSS */
+.profile-tab{
+    display: block;
+    margin: 30px;
+}
+
+.profile-tab .update{
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--black-color);
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    width: 80%;
+    text-align: center;
+    margin: 10px auto;
+}
+.profile-tab .update:hover{
+    background-color: var(--white-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+}
+
+.profile-tab .input{
+    border: 1px solid var(--black-color);
+    color: var(--black-color);
+    padding: 10px 10px 10px 5px;
+    border-radius: 5px;
+    width: 80%;
 }

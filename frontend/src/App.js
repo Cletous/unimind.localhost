@@ -73,6 +73,10 @@ function App() {
           path: "/specialists",
           element: <Specialists />,
         },
+        {
+          path: "/logout",
+          element: <Logout />,
+        },
       ],
     },
     {
@@ -82,10 +86,6 @@ function App() {
     {
       path: "/register",
       element: <Register />,
-    },
-    {
-      path: "/logout",
-      element: <Logout />,
     },
     {
       path: "*",

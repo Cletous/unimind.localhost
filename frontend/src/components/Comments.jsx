@@ -6,6 +6,8 @@ import moment from "moment";
 
 const Comments = ({ postId }) => {
   const [description, setDescription] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+
   const { currentUser } = useContext(AuthContext);
 
   const { isLoading, error, data } = useQuery(["comments"], () =>
@@ -29,24 +31,29 @@ const Comments = ({ postId }) => {
   );
 
   const handleClick = async (e) => {
-    e.preventDefault();
-    mutation.mutate({ description, postId });
-    setDescription("");
+    if (description) {
+      e.preventDefault();
+      mutation.mutate({ description, postId });
+      setDescription("");
+    } else {
+      setErrMsg("comment cannot be null");
+    }
   };
 
   return (
     <div className="">
       <form onSubmit={handleClick}>
-            <div>
-            <textarea 
-            name="description" 
-            id="" 
-            required 
+        <div>
+          <textarea
+            name="description"
+            id=""
+            required
             placeholder={`Care to share your comment(s) ${currentUser.anonymous_name}?`}
             onChange={(e) => setDescription(e.target.value)}
             className="full-width"
-            rows={2}></textarea>
-            </div>
+            rows={2}
+          ></textarea>
+        </div>
         <button>Send Comment</button>
       </form>
       {error

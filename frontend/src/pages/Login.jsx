@@ -50,7 +50,7 @@ const Login = () => {
     <>
       {success ? (
         <section>
-          <h1 className="centered">Success!</h1>
+          <h1 className="centered success-text">Success!</h1>
           <p className="centered">
             <a className="login-button" href="/">
               Home

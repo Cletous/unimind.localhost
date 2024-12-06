@@ -1,4 +1,4 @@
-import profile_placeholder from '../images/profile/profile-placeholder.jpg'
+import profile_placeholder from "../images/profile/profile-placeholder.jpg";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
 import { useState } from "react";
@@ -34,32 +34,30 @@ const Post = ({ post }) => {
 
   return (
     <div className="">
-      <div className="post-grid">
-        <div className="post-profile-box">
-          <img src={profile_placeholder} alt="" />
-          <Link
-            to={`/profile/${post.userId}`}
-          >
-            <span className="">{post.anonymous_name}</span>
-          </Link>
-          <div className="">{moment(post.createdAt).fromNow()}</div>
-          <div className="">
-          {post.userId === currentUser.id && (
-            <button className="danger-button" onClick={handleDelete}>delete post</button>
-          )}
-          </div>
-        </div>
-        <div className="post-description-box">
-        <p>{post.description}</p>
-        </div>
+      <div className="post-profile-box">
+        <img src={profile_placeholder} alt="" />
         <div className="">
-          
+          <span className="">{post.anonymous_name}</span>
+          <div className="">{moment(post.createdAt).fromNow()}</div>
         </div>
+        <div className="button-box">
+          {post.userId === currentUser.id && (
+            <button className="danger-button" onClick={handleDelete}>
+              delete post
+            </button>
+          )}
+        </div>
+      </div>
+      <div className="post-grid">
+        <div className="post-description-box">
+          <p>{post.description}</p>
+        </div>
+        <div className=""></div>
         <div className="post-comments-box">
           <div className="" onClick={() => setCommentOpen(!commentOpen)}>
             View All Comments
           </div>
-          
+
           {commentOpen && <Comments postId={post.id} />}
         </div>
       </div>

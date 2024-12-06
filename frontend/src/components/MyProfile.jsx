@@ -8,11 +8,13 @@ const MyProfile = () => {
 
   const [inputs, setInputs] = useState({
     userId: currentUser.id,
-    anonymous_name: "",
-    email: "",
+    anonymous_name: currentUser.anonymous_name,
+    email: currentUser.email,
     password: "",
   });
 
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -30,45 +32,68 @@ const MyProfile = () => {
           inputs,
         }
       );
+
+      setSuccess(true);
       console.log(response);
     } catch (error) {
       console.log(error.message);
+      if (error.response?.status === 409) {
+        setErrMsg("Anonymous name or email already taken");
+      } else {
+        setErrMsg("Update Failed");
+      }
       //show error
     }
     // mutation.mutate({ description });
   };
   return (
-    <div>
-      <h1>My Profile</h1>
-      <form onSubmit={updateProfile}>
-        <label htmlFor="">Anonymous Id</label>
-        <input
-          type="text"
-          name="anonymous_name"
-          placeholder="anonymous123"
-          onChange={handleChange}
-          required
-        />
+    <>
+      {success ? (
+        <section>
+          <h1 className="centered">Success!</h1>
+          <p className="centered">
+            <Link to="/login" className="login-button">
+              Login
+            </Link>
+          </p>
+        </section>
+      ) : (
+        <div className="profile-tab">
+          <h1>My Profile</h1>
+          <form onSubmit={updateProfile}>
+            <label htmlFor="">Anonymous Id</label>
+            <input
+              type="text"
+              name="anonymous_name"
+              placeholder={currentUser.anonymous_name}
+              onChange={handleChange}
+              className="input"
+              required
+            />
 
-        <label htmlFor="">Email Address</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="example@example.com"
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="">Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="example@example.com"
-          onChange={handleChange}
-          required
-        />
-        <button>Update Profile</button>
-      </form>
-    </div>
+            <label htmlFor="">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              placeholder={currentUser.email}
+              onChange={handleChange}
+              className="input"
+              required
+            />
+            <label htmlFor="">Password</label>
+            <input
+              type="password"
+              name="password"
+              onChange={handleChange}
+              className="input"
+              required
+            />
+            <button className="update">Update Profile</button>
+            <p className="errmsg">{errMsg}</p>
+          </form>
+        </div>
+      )}
+    </>
   );
 };
 
