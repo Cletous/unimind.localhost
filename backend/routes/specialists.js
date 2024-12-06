@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/", getSpecialists);
 router.get("/dismiss/:id", dismissSpecialist);
-router.post("/promote/:id", promoteToSpecialist);
+router.post("/promote/:email", promoteToSpecialist);
 
 export default router;
 

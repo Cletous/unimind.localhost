@@ -12,6 +12,16 @@ export const getUser = (req, res) => {
   });
 };
 
+export const updateProfile = (req, res) =>
+{
+  const q = "UPDATE users SET (`anonymous_name`, `email`, `password`) VALUES (?) WHERE id = "+req.body.inputs.userId
+  
+  db.query(q, [req.body.inputs.anonymous_name, req.body.inputs.email, req.body.inputs.password ], (err, data) =>{
+    if (err) return res.status(500).json(err);
+  })
+  return res.status(200).json(req.body.inputs.userId);
+  //
+}
 export const updateUser = (req, res) => {
   const token = req.cookies.accessToken;
   if (!token) return res.status(401).json("Not authenticated!");

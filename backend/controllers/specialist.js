@@ -3,9 +3,9 @@ import jwt from "jsonwebtoken";
 
 export const promoteToSpecialist = (req, res) => {
   const token = req.cookies.accessToken;
-  const q = "UPDATE users SET role_id = 2 WHERE id = ?";
+  const q = "UPDATE users SET role_id = 2 WHERE email = ?";
 
-  db.query(q, [req.params.id], (err, data)=>{
+  db.query(q, [req.params.email], (err, data)=>{
     if(err) return res.status(500).json(err);
     return res.status(200).json(data);
   })

@@ -2,6 +2,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Logout from "./pages/Logout";
 import Specialists from "./components/Specialists";
+import PageNotFound from "./components/PageNotFound";
+import MyProfile from "./components/MyProfile";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,14 +16,11 @@ import RightSideBar from "./components/RightSideBar";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import { useContext } from "react";
-import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-
-  const { darkMode } = useContext(DarkModeContext);
 
   const queryClient = new QueryClient();
 
@@ -62,6 +62,10 @@ function App() {
           element: <Home />,
         },
         {
+          path: "/my-profile",
+          element: <MyProfile />,
+        },
+        {
           path: "/profile/:id",
           element: <Profile />,
         },
@@ -82,6 +86,10 @@ function App() {
     {
       path: "/logout",
       element: <Logout />,
+    },
+    {
+      path: "*",
+      element: <PageNotFound />,
     },
   ]);
 
